@@ -1,6 +1,5 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { useAppDispatch, useAppSelector } from '../hook';
-import { getPeopleData } from '../store/peopleSlice';
 import { showPerson } from '../store/personSlice';
 import { Table } from 'antd';
 
@@ -12,9 +11,7 @@ interface IPersonObject {
 const PeopleTable: FC = () => {
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    dispatch(getPeopleData());
-  }, [dispatch]);
+  
   
   const people = useAppSelector(store => store.people.peopleData);
   const peopleNames = people.map((person, index) => {

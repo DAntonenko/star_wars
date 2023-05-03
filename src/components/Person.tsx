@@ -12,7 +12,6 @@ const Person: FC = () => {
 
   const name = useAppSelector(store => store.person.personShown);
   const personInfo = useAppSelector(store => store.people.peopleData.find(person => person.name === name));
-  console.log(personInfo);
 
   const personListData = [];
   if (personInfo) {
