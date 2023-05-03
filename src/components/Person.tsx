@@ -1,17 +1,17 @@
 import { FC } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../hook';
 import { showPerson } from '../store/personSlice';
 import { Modal } from 'antd';
 import { List } from 'antd';
 
 const Person: FC = () => {
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handlePersonClose = () => dispatch(showPerson(null))
 
-  const name = useSelector(store => store.person.personShown);
-  const personInfo = useSelector(store => store.people.peopleData.find(person => person.name === name));
+  const name = useAppSelector(store => store.person.personShown);
+  const personInfo = useAppSelector(store => store.people.peopleData.find(person => person.name === name));
   console.log(personInfo);
 
   const personListData = [];
@@ -27,7 +27,7 @@ const Person: FC = () => {
   
   return (
     <Modal
-      open={name}
+      open={name !== null}
       onCancel={handlePersonClose}
       footer={null}
     >
