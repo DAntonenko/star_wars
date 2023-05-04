@@ -1,12 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { Species, ISpecie } from 'swapi-ts';
 
-const getSpeciesFromAllPages = () => {
+const getSpeciesFromAllPages = async () => {
   const speciesFromAllPages: ISpecie[] = [];
 
   for (let pageNum = 1; pageNum < 5; pageNum++) {
-    Species.getPage(pageNum).then(res => speciesFromAllPages.push(...res.results));
-  };
+    await Species.getPage(pageNum).then(res => speciesFromAllPages.push(...res.results));
+  }
 
   return speciesFromAllPages;
 };

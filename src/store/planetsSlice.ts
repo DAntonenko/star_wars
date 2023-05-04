@@ -1,12 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { Planets, IPlanet } from 'swapi-ts';
 
-const getPlanetsFromAllPages = () => {
+const getPlanetsFromAllPages = async () => {
   const planetsFromAllPages: IPlanet[] = [];
 
   for (let pageNum = 1; pageNum < 7; pageNum++) {
-    Planets.getPage(pageNum).then(res => planetsFromAllPages.push(...res.results));
-  };
+    await Planets.getPage(pageNum).then(res => planetsFromAllPages.push(...res.results));
+  }
 
   return planetsFromAllPages;
 };

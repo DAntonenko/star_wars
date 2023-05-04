@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 import { useAppDispatch, useAppSelector } from '../hook';
 import { showPerson } from '../store/personSlice';
 import { Modal } from 'antd';
@@ -26,11 +26,11 @@ const Person: FC = () => {
     personListData.push(`eye color: ${personInfo.eye_color}`);
     personListData.push(`birth year: ${personInfo.birth_year}`);
     personListData.push(`gender: ${personInfo.gender}`);
-  };
+  }
 
   if (homeworldInfo) {
     personListData.push(`homeworld: ${homeworldInfo.name}`);
-  };
+  }
 
   if (specieInfo) {
     personListData.push(`specie: ${specieInfo.name}`);

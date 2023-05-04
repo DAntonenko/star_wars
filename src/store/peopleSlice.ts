@@ -1,12 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { People, IPeople } from 'swapi-ts';
 
-const getPeopleFromAllPages = () => {
+const getPeopleFromAllPages = async () => {
   const peopleFromAllPages: IPeople[] = [];
 
   for (let pageNum = 1; pageNum < 10; pageNum++) {
-    People.getPage(pageNum).then(res => peopleFromAllPages.push(...res.results));
-  };
+    await People.getPage(pageNum).then(res => peopleFromAllPages.push(...res.results));
+  }
 
   return peopleFromAllPages;
 };

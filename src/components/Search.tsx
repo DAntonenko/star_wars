@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../hook';
 import { showPerson } from '../store/personSlice';
 import { AutoComplete } from 'antd';
@@ -9,7 +9,7 @@ const Search: FC = () => {
   interface IOption {
     value: string,
     label: string
-  };
+  }
 
   const dispatch = useAppDispatch();
   
@@ -23,7 +23,7 @@ const Search: FC = () => {
     peopleNames.forEach(name => {
       if (value.length && name.toLowerCase().slice(0, value.length) === value.toLowerCase()) {
         matchingNames.push({value: name, label: name});
-      };
+      }
     });
     setOptions(matchingNames);
   };

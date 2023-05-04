@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import React,{ FC, useEffect } from 'react';
 import { useAppDispatch } from './hook';
 import { getPeopleData } from './store/peopleSlice';
 import { getPlanetsData } from './store/planetsSlice';
