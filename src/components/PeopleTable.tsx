@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { useAppDispatch, useAppSelector } from '../hook';
 import { showPerson } from '../store/personSlice';
 import { Table } from 'antd';
+import type { ColumnsType } from 'antd/es/table';
 
 interface IPersonObject {
   key: number,
@@ -25,7 +26,11 @@ const PeopleTable: FC = () => {
     return personObject;
   });
 
-  const columns = [
+  const filters = planets.map(planet => {
+    return {text: planet.name, value: planet.name};
+  });
+
+  const columns: ColumnsType<IPersonObject> = [
     {
       key: 'name',
       title: 'Name',
@@ -35,6 +40,8 @@ const PeopleTable: FC = () => {
       key: 'homeworld',
       title: 'Homeworld',
       dataIndex: 'homeworld',
+      filters: filters,
+      onFilter: (value: string | number | boolean, record) => (record.homeworld ?? '').indexOf(value as string) === 0,
     },
   ];
 
