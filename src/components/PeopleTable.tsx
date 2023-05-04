@@ -5,29 +5,36 @@ import { Table } from 'antd';
 
 interface IPersonObject {
   key: number,
-  name: string
+  name: string,
+  homeworld: string | undefined
 }
 
 const PeopleTable: FC = () => {
   const dispatch = useAppDispatch();
 
   const isLoading = useAppSelector(store => store.people.status === 'loading' || store.people.status === null);
+
   const people = useAppSelector(store => store.people.peopleData);
-  const peopleNames = people.map((person, index) => {
+  const planets = useAppSelector(store => store.planets.planetsData);
+  const persons = people.map((person, index) => {
+    const homeworld = planets.find(planet => planet.url === person.homeworld);
     const personObject = {} as IPersonObject;
     personObject.key = index;
     personObject.name = person.name;
+    personObject.homeworld = homeworld?.name;
     return personObject;
   });
-
-  console.log(peopleNames);
-  console.log(isLoading);
 
   const columns = [
     {
       key: 'name',
       title: 'Name',
       dataIndex: 'name',
+    },
+    {
+      key: 'homeworld',
+      title: 'Homeworld',
+      dataIndex: 'homeworld',
     },
   ];
 
@@ -40,7 +47,7 @@ const PeopleTable: FC = () => {
   return (
     <Table
       columns={columns}
-      dataSource={peopleNames}
+      dataSource={persons}
       onRow={onRowClick}
       pagination={{position: ['bottomCenter']}}
       loading={isLoading}

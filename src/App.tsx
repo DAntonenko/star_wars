@@ -3,12 +3,14 @@ import { useAppDispatch } from './hook';
 import { getPeopleData } from './store/peopleSlice';
 import { getPlanetsData } from './store/planetsSlice';
 import { getSpeciesData } from './store/speciesSlice';
-import { Button } from 'antd';
+import { Layout, Space, Button } from 'antd';
 import { ReloadOutlined } from '@ant-design/icons';
 import Search from './components/Search';
 import PeopleTable from './components/PeopleTable';
 import Person from './components/Person';
 import 'antd/dist/reset.css';
+
+const { Header, Content } = Layout;
 
 const App: FC = () => {
 
@@ -21,20 +23,24 @@ const App: FC = () => {
   }, [dispatch]);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <Button
-          type='primary'
-          size='middle'
-          icon={<ReloadOutlined />}
-        >
-          Reload
-        </Button>
-        <Search />
-      </header>
-      <PeopleTable />
-      <Person />
-    </div>
+    <Space direction="vertical" style={{ width: '100%' }} size={[0, 48]}>
+      <Layout>
+        <Header style={{ display: 'flex', gap: 10, alignItems: 'center', paddingInline: 16, backgroundColor: '#f5f5f5' }}>
+          <Button
+            type='primary'
+            size='middle'
+            icon={<ReloadOutlined />}
+          >
+            Reload
+          </Button>
+          <Search />
+        </Header>
+        <Content>
+          <PeopleTable />
+          <Person />
+        </Content>
+      </Layout>
+    </Space>
   );
 }
 
