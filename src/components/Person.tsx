@@ -12,8 +12,12 @@ const Person: FC = () => {
 
   const name = useAppSelector(store => store.person.personShown);
   const personInfo = useAppSelector(store => store.people.peopleData.find(person => person.name === name));
+  const homeworldInfo = useAppSelector(store => store.planets.planetsData.find(planet => planet.url === personInfo?.homeworld));
+  const specieInfo = useAppSelector(store => store.species.speciesData.find(specie => specie.url === personInfo?.species[0]));
+
 
   const personListData = [];
+
   if (personInfo) {
     personListData.push(`height: ${personInfo.height}`);
     personListData.push(`mass: ${personInfo.mass}`);
@@ -23,6 +27,14 @@ const Person: FC = () => {
     personListData.push(`birth year: ${personInfo.birth_year}`);
     personListData.push(`gender: ${personInfo.gender}`);
   };
+
+  if (homeworldInfo) {
+    personListData.push(`homeworld: ${homeworldInfo.name}`);
+  };
+
+  if (specieInfo) {
+    personListData.push(`specie: ${specieInfo.name}`);
+  }
   
   return (
     <Modal

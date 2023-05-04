@@ -11,8 +11,6 @@ interface IPersonObject {
 const PeopleTable: FC = () => {
   const dispatch = useAppDispatch();
 
-  
-  
   const people = useAppSelector(store => store.people.peopleData);
   const peopleNames = people.map((person, index) => {
     const personObject = {} as IPersonObject;
