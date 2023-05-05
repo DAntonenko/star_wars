@@ -23,7 +23,7 @@ const App: FC = () => {
   }, [dispatch]);
 
   return (
-    <Space direction="vertical" style={{ width: '100%' }} size={[0, 48]}>
+    <Space direction="vertical" style={{ alignItems: 'center', width: '100%', backgroundColor: '#f5f5f5' }}>
       <Layout>
         <Header style={{ display: 'flex', gap: 10, alignItems: 'center', paddingInline: 16, backgroundColor: '#f5f5f5' }}>
           <Button
