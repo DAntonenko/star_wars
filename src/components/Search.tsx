@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../hook';
-import { showPerson } from '../store/personSlice';
+import { personActions } from '../store/personSlice';
 import { AutoComplete } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 
@@ -28,7 +28,7 @@ const Search: FC = () => {
     setOptions(matchingNames);
   };
 
-  const handleSelect = (value: string) => dispatch(showPerson(value));
+  const handleSelect = (value: string) => dispatch(personActions.showPerson(value));
 
   return (
     <AutoComplete

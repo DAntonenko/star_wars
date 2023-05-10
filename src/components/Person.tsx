@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { useAppDispatch, useAppSelector } from '../hook';
-import { showPerson } from '../store/personSlice';
+import { personActions } from '../store/personSlice';
 import { Modal } from 'antd';
 import { List } from 'antd';
 
@@ -8,7 +8,7 @@ const Person: FC = () => {
 
   const dispatch = useAppDispatch();
 
-  const handlePersonClose = () => dispatch(showPerson(null))
+  const handlePersonClose = () => dispatch(personActions.showPerson(null))
 
   const name = useAppSelector(store => store.person.personShown);
   const personInfo = useAppSelector(store => store.people.peopleData.find(person => person.name === name));

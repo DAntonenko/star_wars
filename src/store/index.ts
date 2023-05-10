@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import peopleReducer from './peopleSlice';
 import planetsReducer from './planetsSlice';
 import speciesReducer from './speciesSlice';
-import personReducer from './personSlice';
+import { personReducer } from './personSlice';
 
 
 const store = configureStore({

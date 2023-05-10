@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { useAppDispatch, useAppSelector } from '../hook';
-import { showPerson } from '../store/personSlice';
+import { personActions } from '../store/personSlice';
 import { Table } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 
@@ -47,7 +47,7 @@ const PeopleTable: FC = () => {
 
   const onRowClick = (record: IPersonObject) => {
     return {
-      onClick: () => dispatch(showPerson(record.name))
+      onClick: () => dispatch(personActions.showPerson(record.name))
     };
   }
 
